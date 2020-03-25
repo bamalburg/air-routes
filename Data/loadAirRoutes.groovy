@@ -1,7 +1,7 @@
 graph = JanusGraphFactory.open('inmemory')
 
 // Change the path below to point to wherever you put the graphml file
-graph.io(graphml()).readGraph('C:/Users/BenjaminMalburg/Documents/GitHub/graph/sample-data/air-routes-latest.graphml')
+graph.io(graphml()).readGraph('/Users/ben/Documents/GitHub/graph/sample-data/air-routes-latest.graphml')
 mgmt = graph.openManagement()
 
 g=graph.traversal()
