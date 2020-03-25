@@ -1,0 +1,3 @@
+cd /Users/ben/Documents/janusgraph-0.4.1-hadoop2/bin
+sh gremlin.sh
+:load /Users/ben/Documents/GitHub/air-routes/Data/loadAirRoutes.groovy
