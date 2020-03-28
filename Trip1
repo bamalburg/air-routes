@@ -1,0 +1,27 @@
+- Plan trip from Missouri to London
+  - avoid COVID-19 hotspots
+  - minimize stops
+  - visit some family along the way?
+
+
+// Briefly look at the data:
+
+// open graph management
+mgmt = graph.openManagement()
+// What kinds of vertices are there?
+mgmt.getVertexLabels()
+// What kinds of edges are there?
+mgmt.getRelationTypes(EdgeLabel.class)
+// What properties are on the vertices and edges?
+mgmt.getRelationTypes(PropertyKey.class)
+
+g.V().has("city", "London").count()
+// Get from Missouri to London
+g.V().has('region', 'US-MO').
+  or(
+    until(has('city', 'London')),
+    emit().path().local(unfold().count()).is(3))
+  repeat(out()).
+  emit().path().
+  where(local(unfold().count()).is(1)).
+  limit(10).local(unfold().values('desc').fold())
