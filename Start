@@ -1,3 +1,4 @@
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_241`
 cd /Users/ben/Documents/janusgraph-0.4.1-hadoop2/bin
 sh gremlin.sh
 :load /Users/ben/Documents/GitHub/air-routes/Data/loadAirRoutes.groovy
