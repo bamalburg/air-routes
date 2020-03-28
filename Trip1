@@ -1,6 +1,6 @@
 - Plan trip from Missouri to London
-  - avoid COVID-19 hotspots
   - minimize stops
+  - avoid COVID-19 hotspots
   - visit some family along the way?
 
 
@@ -15,13 +15,15 @@ mgmt.getRelationTypes(EdgeLabel.class)
 // What properties are on the vertices and edges?
 mgmt.getRelationTypes(PropertyKey.class)
 
-g.V().has("city", "London").count()
-// Get from Missouri to London
+// What are some options to get from Missouri to London
+// with only one layover?
 g.V().has('region', 'US-MO').
-  or(
-    until(has('city', 'London')),
-    emit().path().local(unfold().count()).is(3))
+  times(2).
   repeat(out()).
-  emit().path().
-  where(local(unfold().count()).is(1)).
-  limit(10).local(unfold().values('desc').fold())
+  has('city', 'London').
+  path().
+  limit(10).
+  local(
+    unfold().values('code').fold())
+
+// Avoid COVID-19 hotspots
