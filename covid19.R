@@ -2,14 +2,14 @@
 # Ben Malburg
 # Last updated 2020-03-28
 
-# load required packages
-# not finished with this yet
+# Installs and/or loads required packages
 packages = c("lubridate", "dplyr")
-install.packages(packages)
-for (package in packages){
-  library(package)
-}
-
+tmp = sapply(packages, function(pkg){
+  if (!require(pkg, character.only = T)){
+    install.packages(pkg)
+    library(pkg, character.only = T)
+  }
+})
 
 #### Data ####
 
